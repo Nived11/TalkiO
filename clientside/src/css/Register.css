@@ -1,0 +1,325 @@
+.register-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.left-section {
+  width: 50%;
+  background: linear-gradient(rgba(38, 15, 72, 0.885), rgba(115, 54, 221, 0.9)), url("../assets/user.png") no-repeat center center/cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.left-content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.app-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.left-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.left-bottom p {
+  margin-bottom: 10px;
+}
+
+.signin-btn {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.signin-btn:hover {
+  background-color: white;
+  color: #6d28d9;
+}
+
+.right-section {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(38, 15, 72, 0.885), rgba(115, 54, 221, 0.9));
+
+  /* background: rgb(234, 234, 234); */
+}
+
+.register-form {
+  width: 90%;
+  max-width: 450px;
+  padding: 30px;
+  background: rgb(246, 246, 246);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #6d28d9;
+  font-size: 1.8rem;
+}
+
+.profile-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: 2px dashed #d1d5db;
+}
+
+.upload-icon {
+  font-size: 2rem;
+  color: #9ca3af;
+}
+
+.profile-upload label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-upload span {
+  color: #6d28d9;
+  font-size: 0.9rem;
+}
+
+.input-file {
+  display: none;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #6d28d9;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+}
+
+.signup-btn {
+  width: 100%;
+  background: #6d28d9;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.signup-btn:hover {
+  background: #5b21b6;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  color: #6b7280;
+}
+
+.login-link a {
+  color: #6d28d9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .register-container {
+    flex-direction: column;
+  }
+  
+  .left-section {
+    display: none;
+  }
+  
+  .right-section {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .register-form {
+    width: 90%;
+    padding: 20px;
+    margin: 20px 0;
+  }
+}
+/* Add this to your Register.css file */
+
+/* For image preview and upload */
+.profile-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  margin-bottom: 10px;
+}
+
+.camera-icon {
+  font-size: 24px;
+  color: #666;
+}
+
+.image-preview-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.profile-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #6931f5;
+}
+
+.camera-icon-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #541994;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.camera-icon-overlay:hover {
+  background-color: #3c1649;
+}
+
+.input-file {
+  display: none;
+}
+
+/* For input fields with icons */
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  color: #666;
+  font-size: 16px;
+}
+
+.input-field {
+  padding-left: 35px !important;
+  width: 100%;
+}
+
+/* For password toggle */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+}
+
+.toggle-password:hover {
+  color: #333;
+}
+
+/* Improve form layout */
+.form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+}
