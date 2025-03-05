@@ -48,3 +48,59 @@ export async function login(req,res){
         
     }
 }
+
+export async function Home(req,res){
+    try{
+        console.log("end point");
+        console.log(req.user);
+        const _id=req.user.userID;
+        console.log(_id);
+        
+        const user=await userSchema.findOne({_id});
+        res.status(200).send({_id:_id,name:user.name,email:user.email,phone:user.phone,profileImage:user.profileImage});  
+    }catch(error){
+        res.status(400).send({error})
+    }
+}
+
+export async function profileUser(req, res) {
+    try {
+        const {id } = req.params;
+        console.log(id);
+
+        const user = await userSchema.findById(id);
+        if (!user) {
+            return res.status(404).send({ msg: "User not found" });
+        }
+        return res.status(200).send({ 
+            _id:user._id,
+            name:user.name,
+            email:user.email,
+            phone:user.phone,
+            profileImage:user.profileImage
+        });
+    } catch (error) {
+        return res.status(500).send({ error});
+    }
+}
+
+export async function updateUser(req, res) {
+    try {
+        const { id } = req.params;
+        const { name, phone, profileImage } = req.body;
+        console.log({ name,phone, });
+        const updateData = { name: name || user.name, phone: phone || user.phone};
+        if (profileImage) {
+            updateData.profileImage = profileImage;
+        }
+        const updatedUser = await userSchema.findByIdAndUpdate(id, updateData, { new: true } );
+        if (!updatedUser) {
+            return res.status(500).send({ msg: "Failed to update user" });
+        }
+        return res.status(200).send({ msg: "User updated successfully", 
+            user: { name: updatedUser.name, phone: updatedUser.phone, profileImage: updatedUser.profileImage }});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send({  msg: {error}});
+    }
+}
