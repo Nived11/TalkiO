@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { UserCircle2, Edit3, Save, Camera, Mail, Phone, User } from 'lucide-react';
+import { UserCircle2, Edit3, Save, Camera, Mail, Phone, User, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -11,8 +11,6 @@ const ProfilePage = () => {
   const [profileImage, setProfileImage] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
-
-  
 
   const [userData, setUserData] = useState({
     name: '',
@@ -62,7 +60,6 @@ const ProfilePage = () => {
     fetchUserDetails();
   }, [id, navigate]);
 
-
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -98,7 +95,7 @@ const ProfilePage = () => {
         navigate('/login');
         return;
       }
-      const updateData = { name: userData.name,phone: userData.phone,profileImage: profileImage};
+      const updateData = { name: userData.name, phone: userData.phone, profileImage: profileImage };
       const res = await axios.put(`${ApiPath()}/update/${id}`, updateData, {
         headers: { 
           Authorization: `Bearer ${token}`,
@@ -128,7 +125,7 @@ const ProfilePage = () => {
     } catch (error) {
       console.error(error);
       if (error.res) {
-        console.error( error.res.data);
+        console.error(error.res.data);
         toast.error(error.res.data.msg);
       } else {
         toast.error("Network error. Please try again.");
@@ -138,25 +135,35 @@ const ProfilePage = () => {
 
   const handleCancelEdit = () => {
     setIsEditing(false);
-    setUserData(prevState => ({...prevState,name: userData.name, phone: userData.phone}));
+    setUserData(prevState => ({...prevState, name: userData.name, phone: userData.phone}));
     setProfileImage(userData.profileImage);
+  };
+
+  const goToHome = () => {
+    navigate('/home');
   };
 
   return (
     <div className="profile-container">
+       <div className="back-button" onClick={goToHome}>
+          <ArrowLeft size={20} />
+          <span>Back</span>
+        </div>
       <div className="profile-wrapper">
+       
+        
         <form onSubmit={updateUserProfile}>
           <div className="profile-header">
             <div className="profile-image-container">
               {profileImage ? (
                 <img src={profileImage} alt="Profile" className="profile-image" />
               ) : (
-                <UserCircle2  className="default-profile-icon"  size={120}  strokeWidth={1} />
+                <UserCircle2 className="default-profile-icon" size={120} strokeWidth={1} />
               )}
               {isEditing && (
                 <label className="image-upload-overlay">
                   <Camera size={24} />
-                  <input  type="file"  accept="image/*"  className="hidden-file-input"
+                  <input type="file" accept="image/*" className="hidden-file-input"
                     onChange={handleImageUpload} />
                 </label>
               )}
@@ -172,7 +179,7 @@ const ProfilePage = () => {
               <div className="detail-content">
                 <label>Full Name</label>
                 {isEditing ? (
-                  <input   type="text" name="name" value={userData.name} onChange={handleInputChange}className="profile-input" required/>
+                  <input type="text" name="name" value={userData.name} onChange={handleInputChange} className="profile-input" required/>
                 ) : (
                   <p>{userData.name}</p>
                 )}
@@ -198,7 +205,7 @@ const ProfilePage = () => {
               <div className="detail-content">
                 <label>Phone Number</label>
                 {isEditing ? (
-                  <input  type="tel"name="phone" value={userData.phone} onChange={handleInputChange} className="profile-input"required/>
+                  <input type="tel" name="phone" value={userData.phone} onChange={handleInputChange} className="profile-input" required/>
                 ) : (
                   <p>{userData.phone}</p>
                 )}
@@ -208,16 +215,16 @@ const ProfilePage = () => {
 
           <div className="profile-actions">
             {!isEditing ? (
-              <button  type="button" className="edit-button"  onClick={() => setIsEditing(true)}>
+              <button type="button" className="edit-button" onClick={() => setIsEditing(true)}>
                 <Edit3 size={18} />
                 <span>Edit Profile</span>
               </button>
             ) : (
               <div className="editing-buttons">
-                <button  className="save-button" type="submit" >
+                <button className="save-button" type="submit">
                   <Save size={18} /><span>Save Changes</span>
                 </button>
-                <button  type="button" className="cancel-button" onClick={handleCancelEdit} > Cancel</button>
+                <button type="button" className="cancel-button" onClick={handleCancelEdit}>Cancel</button>
               </div>
             )}
           </div>

@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #6a11cb 0%, #2a2075 100%);
+  background: linear-gradient(135deg, #420e79 0%, #1a115f 100%);
   padding: 20px;
   font-family: 'Inter', sans-serif;
 }
@@ -16,11 +16,33 @@
   width: 100%;
   padding: 30px;
   text-align: center;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-button span {
+  margin-left: 5px;
+}
+
+.back-button:hover {
+  color: #bf97ec;
 }
 
 .profile-header {
   margin-bottom: 30px;
   position: relative;
+  margin-top: 20px;
 }
 
 .profile-image-container {
@@ -170,6 +192,7 @@
     height: 120px;
   }
 }
+
 .cancel-button{
   margin-top: 10px;
   width: 100px;

@@ -3,6 +3,7 @@ import Login from "./components/Login"
 import Register from "./components/Register"
 import Home from './components/Home'
 import Profile from './components/profile'
+import "../src/App.css"
 function App() {
 
   return (

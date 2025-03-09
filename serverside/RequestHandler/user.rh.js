@@ -104,3 +104,15 @@ export async function updateUser(req, res) {
         return res.status(500).send({  msg: {error}});
     }
 }
+
+export async function getContacts(req, res) {
+    try{
+        const logedUser_id=req.body._id;
+        const contacts=await userSchema.find({ _id: { $ne: logedUser_id } });
+        res.status(200).send(contacts)
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send({ error: error.message });
+    }
+}
+

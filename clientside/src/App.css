@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+.scrollbar-hide {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .message-pending {
+    opacity: 0.8;
+  }
+  
+  .message-failed {
+    opacity: 0.5;
+    border-left: 3px solid #ef4444;
+  }
